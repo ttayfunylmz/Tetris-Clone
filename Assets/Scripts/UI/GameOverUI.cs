@@ -25,7 +25,7 @@ public class GameOverUI : MonoBehaviour
         gameOverButton.onClick.AddListener(() =>
         {
             Hide();
-            board.EnableComponents();
+            board.RestartGame();
             AudioManager.Instance.Play(Consts.Audio.CLICK_SOUND);
         });
     }

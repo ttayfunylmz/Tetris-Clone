@@ -550,7 +550,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 85451
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aa4d836d7f0948d47a72b7ccb5dadb5f, type: 2}
   m_sharedMaterial: {fileID: -4538230508431377022, guid: aa4d836d7f0948d47a72b7ccb5dadb5f, type: 2}
@@ -2215,6 +2215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007245061}
+  - component: {fileID: 1007245062}
   m_Layer: 5
   m_Name: ScoreUI
   m_TagString: Untagged
@@ -2247,6 +2248,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1007245062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007245060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1023328f78f03cf4a9b0109f0d55be1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  board: {fileID: 1273959134}
+  block: {fileID: 1273959135}
+  scoreText: {fileID: 407790982}
+  linesText: {fileID: 1311043651}
 --- !u!1 &1020642133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,7 +2780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aa4d836d7f0948d47a72b7ccb5dadb5f, type: 2}
   m_sharedMaterial: {fileID: -4538230508431377022, guid: aa4d836d7f0948d47a72b7ccb5dadb5f, type: 2}

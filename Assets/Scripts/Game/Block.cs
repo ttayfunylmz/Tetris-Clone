@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    public event Action<int> OnScoreChanged;
+
     [SerializeField] private float stepDelay = 1f;
     [SerializeField] private float lockDelay = 0.5f;
 
@@ -13,6 +16,8 @@ public class Block : MonoBehaviour
 
     private float stepTime;
     private float lockTime;
+
+    private int score;
 
     public void Initialize(GameBoard board, Vector3Int position, TetrominoData data)
     {
@@ -91,6 +96,8 @@ public class Block : MonoBehaviour
         Board.Set(this);
         Board.ClearLines();
         Board.SpawnPiece();
+
+        SetScore(10);
         AudioManager.Instance.Play(Consts.Audio.LOCK_SOUND);
     }
 
@@ -192,5 +199,17 @@ public class Block : MonoBehaviour
         }
 
         Lock();
+    }
+
+    public void SetScore(int amount)
+    {
+        score += amount;
+        OnScoreChanged?.Invoke(score);
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        OnScoreChanged?.Invoke(score);
     }
 }

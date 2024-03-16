@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 public class GameBoard : MonoBehaviour
 {
     public event Action OnGameOver;
+    public event Action<int> OnLinesScoreChanged;
 
     [SerializeField] private TetrominoData[] tetrominos;
     [SerializeField] private Vector3Int spawnPosition;
@@ -12,6 +13,8 @@ public class GameBoard : MonoBehaviour
     public Block ActiveBlock { get; private set; } 
     public Tilemap Tilemap { get; private set; }
     public bool canPlay = true;
+
+    private int linesScore;
 
     public Vector2Int boardSize = new Vector2Int(10, 20);
 
@@ -62,7 +65,7 @@ public class GameBoard : MonoBehaviour
     private void GameOver()
     {
         Tilemap.ClearAllTiles();
-        DisableComponents();
+        FinishGame();
 
         AudioManager.Instance.Play(Consts.Audio.GAME_OVER_SOUND);
         OnGameOver?.Invoke();
@@ -120,6 +123,10 @@ public class GameBoard : MonoBehaviour
             if(IsLineFull(row))
             {
                 ClearLine(row);
+
+                ActiveBlock.SetScore(100);
+                SetLinesScore(1);
+
                 AudioManager.Instance.Play(Consts.Audio.LINE_CLEAR_SOUND);
             }
             else
@@ -171,17 +178,32 @@ public class GameBoard : MonoBehaviour
         }
     }
 
-    private void DisableComponents()
+    private void SetLinesScore(int amount)
+    {
+        linesScore += amount;
+        OnLinesScoreChanged?.Invoke(linesScore);
+    }
+
+    private void ResetLinesScore()
+    {
+        linesScore = 0;
+        OnLinesScoreChanged?.Invoke(linesScore);
+    }
+
+    private void FinishGame()
     {
         canPlay = false;
         this.enabled = false;
         ActiveBlock.enabled = false;
     }
 
-    public void EnableComponents()
+    public void RestartGame()
     {
         canPlay = true;
         this.enabled = true;
         ActiveBlock.enabled = true;
+
+        ResetLinesScore();
+        ActiveBlock.ResetScore();
     }
 }
