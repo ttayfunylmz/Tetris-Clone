@@ -1,5 +1,5 @@
 <h4 align="center">A "Tetris" Clone game that I made for practice on my <a href="https://www.youtube.com/@skinnydev" target="_blank">Youtube channel</a> live.</h4>
-<h4 align="center">You can access the live stream via <a href="" target="_blank">this link</a> and build the entire game with me.</h4>
+<h4 align="center">You can access the live stream via <a href="https://www.youtube.com/live/I2uh2-P9VOo?si=xt7b7xBUnXcIiANu" target="_blank">this link</a> and build the entire game with me.</h4>
 
 <div align="center">
   <img src="https://art.pixilart.com/sr2003c37029a1b.gif" alt="Centered Image" width="400">
